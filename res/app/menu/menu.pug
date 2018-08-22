@@ -12,6 +12,9 @@
         a(ng-href='/#!/settings')
           span.fa.fa-gears
           span(ng-if='!$root.basicMode', translate) Settings
+        a(ng-href='/#!/analysis')
+          span.fa.fa-chart-pie
+          span(ng-if='!$root.basicMode', translate) Analysis
     ul.nav.stf-nav.stf-feedback.pull-right(ng-cloak, nav-menu='current').unselectable
       li.stf-nav-web-native-button(ng-if='!$root.basicMode && isControlRoute')
         .btn-group
