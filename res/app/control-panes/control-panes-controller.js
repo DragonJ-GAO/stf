@@ -38,6 +38,12 @@ module.exports =
 
     $scope.topTabs = [
       {
+        title: gettext('Appium'),
+        icon: 'fa-fa-tasks fa-fw color-green',
+        templateUrl: 'control-panes/appium/index.pug',
+        filters: ['native', 'web']
+      },
+      {
         title: gettext('Dashboard'),
         icon: 'fa-dashboard fa-fw color-pink',
         templateUrl: 'control-panes/dashboard/dashboard.pug',
@@ -60,10 +66,10 @@ module.exports =
     // TODO: Move this out to Ctrl.resolve
     function getDevice(serial) {
       DeviceService.get(serial, $scope)
-        .then(function(device) {
+        .then(function (device) {
           return GroupService.invite(device)
         })
-        .then(function(device) {
+        .then(function (device) {
           $scope.device = device
           $scope.control = ControlService.create(device, device.channel)
 
@@ -74,8 +80,8 @@ module.exports =
 
           return device
         })
-        .catch(function() {
-          $timeout(function() {
+        .catch(function () {
+          $timeout(function () {
             $location.path('/')
           })
         })
@@ -83,7 +89,7 @@ module.exports =
 
     getDevice($routeParams.serial)
 
-    $scope.$watch('device.state', function(newValue, oldValue) {
+    $scope.$watch('device.state', function (newValue, oldValue) {
       if (newValue !== oldValue) {
         if (oldValue === 'using') {
           FatalMessageService.open($scope.device, false)

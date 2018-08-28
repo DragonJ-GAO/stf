@@ -14,9 +14,10 @@ module.exports = angular.module('control-panes', [
   //require('./resources').name,
   require('./screenshots').name,
   require('./explorer').name,
-  require('./info').name
+  require('./info').name,
+  require('./appium').name
 ])
-  .config(['$routeProvider', function($routeProvider) {
+  .config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider
       .when('/control', {
@@ -41,6 +42,6 @@ module.exports = angular.module('control-panes', [
   .factory('ControlPanesService', require('./control-panes-service'))
   .controller('ControlPanesCtrl', require('./control-panes-controller'))
   .controller('ControlPanesNoDeviceController',
-  require('./control-panes-no-device-controller'))
+    require('./control-panes-no-device-controller'))
   .controller('ControlPanesHotKeysCtrl',
-  require('./control-panes-hotkeys-controller'))
+    require('./control-panes-hotkeys-controller'))
